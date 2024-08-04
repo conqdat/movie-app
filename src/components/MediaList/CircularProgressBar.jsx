@@ -2,7 +2,7 @@ const CircularProgressBar = ({
   percent = 65,
   size = 3,
   strokeWidth = 0.25,
-  strokeColor = percent >= 70 ? "green" : "yellow",
+  strokeColor = percent >= 70 ? "green" : percent >= 50 ? "yellow" : "red",
 }) => {
   const radius = size / 2 - strokeWidth;
   return (
