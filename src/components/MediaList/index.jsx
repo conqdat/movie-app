@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
+import { Link } from "react-router-dom";
 
 const MediaList = ({ title, tabs }) => {
   const [mediaList, setMediaList] = useState([]);
@@ -42,14 +43,16 @@ const MediaList = ({ title, tabs }) => {
       </div>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-6 lg:gap-6">
         {mediaList.map((media) => (
-          <MovieCard
-            key={media.id}
-            title={media.title || media.name}
-            releaseDate={media.release_date || media.first_air_date}
-            poster={media.poster_path}
-            point={media.vote_average}
-            mediaType={media.media_type || activeTabId}
-          />
+          <Link to={`/movie/${media.id}`}>
+            <MovieCard
+              key={media.id}
+              title={media.title || media.name}
+              releaseDate={media.release_date || media.first_air_date}
+              poster={media.poster_path}
+              point={media.vote_average}
+              mediaType={media.media_type || activeTabId}
+            />
+          </Link>
         ))}
       </div>
     </div>
