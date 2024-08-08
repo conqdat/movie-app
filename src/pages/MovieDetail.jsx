@@ -8,7 +8,6 @@ const MovieDetail = () => {
   const { id } = useParams();
   const [movieInfo, setMovieInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  console.log({ id });
 
   useEffect(() => {
     setIsLoading(true);
@@ -25,7 +24,6 @@ const MovieDetail = () => {
     )
       .then(async (res) => {
         const data = await res.json();
-        console.log({ data });
         setMovieInfo(data);
       })
       .catch((err) => {
@@ -43,7 +41,16 @@ const MovieDetail = () => {
   return (
     <div>
       <Banner mediaInfo={movieInfo} />
-      <ActorList />
+      <div className="bg-black">
+        <div className="mx-auto flex max-w-screen-xl px-6 py-10">
+          <div className="flex-[2]">
+            <ActorList />
+          </div>
+          <div className="flex-1">
+            <p>information</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
